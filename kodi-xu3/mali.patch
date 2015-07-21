@@ -23,14 +23,14 @@ diff --git a/xbmc/windowing/X11/WinSystemX11.cpp b/xbmc/windowing/X11/WinSystemX
 index 717834e..b08f272 100644
 --- a/xbmc/windowing/X11/WinSystemX11.cpp
 +++ b/xbmc/windowing/X11/WinSystemX11.cpp
-@@ -507,6 +507,7 @@ bool CWinSystemX11::IsCurrentOutput(CStdString output)
- EGLConfig getEGLConfig(EGLDisplay eglDisplay, XVisualInfo *vInfo)
+@@ -496,6 +496,7 @@ EGLConfig getEGLConfig(EGLDisplay eglDisplay, XVisualInfo *vInfo)
  {
-   EGLint attributes[] = {
-+	EGL_CONFIG_ID, 1,
+   EGLint attributes[] =
+   {
++    EGL_CONFIG_ID, 1,
+     EGL_DEPTH_SIZE, 24,
      EGL_NONE
    };
-   EGLint numConfigs;
 @@ -521,6 +522,11 @@ EGLConfig getEGLConfig(EGLDisplay eglDisplay, XVisualInfo *vInfo)
    for (EGLint i = 0;i < numConfigs;++i)
    {

@@ -1,11 +1,14 @@
---- configure.in.orig	2015-01-19 19:11:42.440555191 +0000
-+++ configure.in	2015-01-19 19:12:43.985590294 +0000
-@@ -1774,7 +1774,7 @@
+diff --git a/configure.ac.orig b/configure.ac
+index 78a635a..2fba97f 100644
+--- a/configure.ac.orig
++++ b/configure.ac
+@@ -1793,7 +1793,7 @@ if test "${USE_STATIC_FFMPEG}" = "1"; then
      elif test "$with_ffmpeg" = "force"; then
        # always build our ffmpeg
        AC_MSG_NOTICE("FFmpeg installation forced by user - installing our version")
 -      CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" ${ffmpeg_build}/autobuild.sh ${FFMPEG_OPTS}
-+      CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" ${ffmpeg_build}/autobuild.sh ${FFMPEG_OPTS} --cpu=cortex-a9 
++      CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" ${ffmpeg_build}/autobuild.sh ${FFMPEG_OPTS} --cpu=cortex-a9
        export PKG_CONFIG_PATH="${ffmpeg_build}/ffmpeg-install/lib/pkgconfig:$PKG_CONFIG_PATH"
  
      elif test "$with_ffmpeg" != "no"; then
+
