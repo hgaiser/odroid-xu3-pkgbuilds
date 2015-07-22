@@ -17,7 +17,7 @@ pkgbase=kodi-u3
 pkgname=('kodi-u3' 'kodi-eventclients-u3')
 pkgver=14.2
 _codename=Helix
-_commit=aa4e4f946f949d3b0f16247ae2349271cf98286e
+_commit=b391600d938e9574f7083934efe605400f20d5c8
 pkgrel=4
 arch=('i686' 'x86_64' 'armv7h')
 url="http://kodi.tv"
@@ -33,18 +33,18 @@ makedepends=(
 )
 source=(
   "$pkgname-$pkgver-$_codename.tar.gz::https://github.com/Owersun/xbmc/archive/$_commit.tar.gz"
-  'march.patch'
+  'march.diff'
   '51-cec.rules'
   'mali.patch'
 )
-sha256sums=('d41222e435c553d9095d56bb4df1dd3a32daf886e111f48781a20c6d46d8081e'
-            '39fb6afff8153efda192e22563ac28425a578dff3e5c4b03351073e7d588d36f'
+sha256sums=('e72d74e0bd7ef5c2f3fca26986effddce73b15ca2386a44a24a23ee76691bd60'
+            '3fad8d70251f24f6fd8e6bed84f10c0f1527d66e47b9e651de5e6b84b2d087e5'
             '42d5adfb911e889134f8b81b509fc15a145e4b3e78be9505a46c47a36100e96f'
             '3d83b2bf1dd40f13d43931595bdf5dace5081bf33599b4cb5483157191e36461')
 
 prepare() {
   cd "$srcdir/xbmc-$_commit"
-  patch -p1 < ../march.patch
+  patch -p0 < ../march.diff
   patch -p1 < ../mali.patch
   find -type f -name *.py -exec sed 's|^#!.*python$|#!/usr/bin/python2|' -i "{}" +
   sed 's|^#!.*python$|#!/usr/bin/python2|' -i tools/depends/native/rpl-native/rpl
